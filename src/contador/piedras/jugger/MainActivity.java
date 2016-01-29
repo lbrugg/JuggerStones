@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
 	Button plust1, plust2;
 	Button min1, min2;
 	Button incStones, decStones;
+	Button setCounter, renameTeams;
 
 	TextView T1Score, T2Score;
 	TextView T1Name, T2Name;
@@ -73,6 +75,8 @@ public class MainActivity extends ActionBarActivity {
 
 		incStones = (Button) findViewById(R.id.inc_stones);
 		decStones = (Button) findViewById(R.id.dec_stones);
+		setCounter = (Button) findViewById(R.id.set_counter);
+		renameTeams = (Button) findViewById(R.id.rename_team_button);
 
 		T1Score = (TextView) findViewById(R.id.TV_pointT1);
 		T2Score = (TextView) findViewById(R.id.TV_pointT2);
@@ -173,6 +177,21 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
+		setCounter.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				SetCounter();
+				return true;
+			}
+		});
+		renameTeams.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				RenameTeams();
+				return true;
+			}
+		});
+
 
 		incStones.setOnClickListener(new OnClickListener() {
 			@Override
@@ -217,9 +236,6 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.rename_teams:
-				RenameTeams();
-				return true;
 			case R.id.action_settings:
 				play.setBackgroundResource(R.drawable.play);
 				isPaused = true;
@@ -247,6 +263,40 @@ public class MainActivity extends ActionBarActivity {
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	private void SetCounter() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+				MainActivity.this);
+
+		alertDialog.setTitle(R.string.set_counter);
+		final EditText counterEdit = new EditText(MainActivity.this);
+		counterEdit.setInputType(InputType.TYPE_CLASS_NUMBER);
+		counterEdit.requestFocus();
+
+		LinearLayout ll = new LinearLayout(this);
+		ll.setOrientation(LinearLayout.VERTICAL);
+		ll.addView(counterEdit);
+		alertDialog.setView(ll);
+
+		alertDialog.setPositiveButton(R.string.accept,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int whichButton) {
+						try{
+							int num = Integer.parseInt(counterEdit.getText().toString());
+							Counter.setText(num + "");
+						}
+						catch(Exception e){
+							Counter.setText(0+"");
+						}
+					}
+				});
+
+		alertDialog.setNegativeButton(R.string.cancel, null);
+
+		AlertDialog alert = alertDialog.create();
+		alert.show();
 	}
 
 	private void RenameTeams() {
