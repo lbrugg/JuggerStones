@@ -15,13 +15,13 @@
         android:id="@+id/TV_nameT1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
+
         android:layout_alignParentTop="true"
         android:text="@string/team1"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/red"
         android:textSize="35sp" />
-    
+
     <TextView
         android:id="@+id/TV_nameT2"
         android:layout_width="wrap_content"
@@ -38,27 +38,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TV_nameT1"
-        android:layout_toRightOf="@+id/b_mast1"
+        android:layout_marginLeft="50dp"
         android:text="@string/cero"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/red"
         android:textSize="35sp" />
 
     <Button
-        android:id="@+id/b_mast1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/TV_pointT1"
-        android:background="@drawable/max" />
-
-    <Button
         android:id="@+id/b_mint1"
         android:layout_width="50dp"
         android:layout_height="10dp"
-        android:layout_alignBaseline="@+id/b_mast1"
-        android:layout_alignBottom="@+id/b_mast1"
-        android:layout_toRightOf="@+id/TV_pointT1"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TV_pointT1"
         android:background="@drawable/min" />
+
+    <Button
+        android:id="@+id/b_mast1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/b_mint1"
+        android:layout_toRightOf="@+id/b_mint1"
+        android:background="@drawable/max" />
+
 
     <Button
         android:id="@+id/b_stop"
@@ -88,21 +92,40 @@
         android:textSize="100sp" />
 
     <Button
+        android:id="@+id/inc_stones"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/max" />
+
+    <Button
+        android:id="@+id/dec_stones"
+        android:layout_width="50dp"
+        android:layout_height="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/min" />
+
+    <Button
         android:id="@+id/b_mint2"
         android:layout_width="50dp"
         android:layout_height="10dp"
+        android:paddingBottom="20dp"
+        android:layout_marginRight="20dp"
         android:layout_alignBaseline="@+id/b_mint1"
-        android:layout_alignBottom="@+id/b_mint1"
-        android:layout_toRightOf="@+id/TV_pointT2"
+        android:layout_toLeftOf="@+id/b_mast2"
         android:background="@drawable/min" />
 
     <TextView
         android:id="@+id/TV_pointT2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/b_mast1"
-        android:layout_alignLeft="@+id/b_stop"
-        android:layout_marginLeft="26dp"
+        android:layout_below="@+id/TV_nameT2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
         android:text="@string/cero"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/green"
@@ -112,8 +135,8 @@
         android:id="@+id/b_mast2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/TV_pointT2"
-        android:layout_toRightOf="@+id/TV_cero"
+        android:layout_alignBaseline="@+id/b_mint1"
+        android:layout_alignParentRight="true"
         android:background="@drawable/max" />
 
 </RelativeLayout>
